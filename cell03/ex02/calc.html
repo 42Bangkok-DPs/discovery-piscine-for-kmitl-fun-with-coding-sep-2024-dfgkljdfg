@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Calculator</title>
+  <script>
+    function calculate() {
+      // Get input values
+      const leftMember = document.getElementById('leftMember').value;
+      const operator = document.getElementById('operator').value;
+      const rightMember = document.getElementById('rightMember').value;
+
+      if (isNaN(leftMember) || isNaN(rightMember) || leftMember < 0 || rightMember < 0) {
+        alert('Error :(');
+        return;
+      }
+
+      const leftNum = parseInt(leftMember);
+      const rightNum = parseInt(rightMember);
+
+      let result;
+
+      if ((operator === '/' || operator === '%') && rightNum === 0) {
+        alert("It's over 9000!");
+        console.log("It's over 9000!");
+        return;
+      }
+
+      switch (operator) {
+        case '+':
+          result = leftNum + rightNum;
+          break;
+        case '-':
+          result = leftNum - rightNum;
+          break;
+        case '*':
+          result = leftNum * rightNum;
+          break;
+        case '/':
+          result = leftNum / rightNum;
+          break;
+        case '%':
+          result = leftNum % rightNum;
+          break;
+        default:
+          result = 'Error :(';
+      }
+
+      alert(`Result: ${result}`);
+      console.log(`Result: ${result}`);
+    }
+
+    setInterval(function () {
+      alert('Please, use me...');
+    }, 30000);
+  </script>
+</head>
+<body>
+  <h1>Basic Calculator</h1>
+  <form onsubmit="calculate(); return false;">
+    <input type="number" id="leftMember" min="0" placeholder="Left number" required>
+    <select id="operator">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+      <option value="%">%</option>
+    </select>
+    <input type="number" id="rightMember" min="0" placeholder="Right number" required>
+    <input type="submit" value="Try me!">
+  </form>
+</body>
+</html>
