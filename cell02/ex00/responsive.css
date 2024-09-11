@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    height: 100%;
+}
+td {
+    border: 2px solid;
+    text-align: left;
+    width: 50%;
+    font-size: 50px;
+}
+.left{
+    background-color: green;
+}
+.right{
+    background-color: orange;
+}
