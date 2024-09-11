@@ -1,0 +1,44 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+.section-1 {
+    height: 100vh;
+    background-image: url('https://wallpapers.com/images/featured/haerin-r7fwzopqkm5ypkdq.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+}
+
+.section-2 {
+    height: 400px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.section-3 {
+    height: 100vh;
+    background-image: url('https://kpopping.com/documents/10/4/800/220807-NewJeans-Haerin-Cookie-at-Inkigayo-documents-2.jpeg?v=5cfcf');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+}
