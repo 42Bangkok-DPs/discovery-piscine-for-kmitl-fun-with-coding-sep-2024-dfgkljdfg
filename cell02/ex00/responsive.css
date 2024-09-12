@@ -1,17 +1,49 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html, body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 table {
     width: 100%;
-    border-collapse: collapse;
     height: 100%;
+    border-collapse: collapse;
 }
+
 td {
     border: 2px solid;
     text-align: left;
     width: 50%;
+    height: 300px;
     font-size: 50px;
 }
-.left{
+
+
+td.left {
     background-color: green;
+    width: 50%;
 }
-.right{
+
+td.right {
     background-color: orange;
+    width: 50%;
+}
+
+
+@media (max-width: 600px) {
+    td {
+        padding: 10px;
+        font-size: 14px;
+    }
 }
