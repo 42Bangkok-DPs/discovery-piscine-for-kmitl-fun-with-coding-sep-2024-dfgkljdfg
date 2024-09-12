@@ -1,44 +1,47 @@
 body,
 html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
     height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-.section-1 {
-    height: 100vh;
+.parallax {
     background-image: url('https://wallpapers.com/images/featured/haerin-r7fwzopqkm5ypkdq.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    font-size: 2em;
-}
-
-.section-2 {
-    height: 400px;
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 1.5em;
-}
-
-.section-3 {
     height: 100vh;
-    background-image: url('https://kpopping.com/documents/10/4/800/220807-NewJeans-Haerin-Cookie-at-Inkigayo-documents-2.jpeg?v=5cfcf');
-    background-size: cover;
+    background-attachment: fixed;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.message {
+    position: relative;
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+.content {
+    background-color: black;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    text-align: center;
-    font-size: 2em;
+    font-size: 36px;
+}
+
+
+.parallax2 {
+    background-image: url('https://kpopping.com/documents/10/4/800/220807-NewJeans-Haerin-Cookie-at-Inkigayo-documents-2.jpeg?v=5cfcf');
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
