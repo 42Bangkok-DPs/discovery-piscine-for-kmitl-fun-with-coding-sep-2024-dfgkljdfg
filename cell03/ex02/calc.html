@@ -1,74 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Basic Calculator</title>
   <script>
     function calculate() {
-      // Get input values
-      const leftMember = document.getElementById('leftMember').value;
-      const operator = document.getElementById('operator').value;
-      const rightMember = document.getElementById('rightMember').value;
+      let leftOperand = document.getElementById("leftOperand").value;
+      let operator = document.getElementById("operator").value;
+      let rightOperand = document.getElementById("rightOperand").value;
 
-      if (isNaN(leftMember) || isNaN(rightMember) || leftMember < 0 || rightMember < 0) {
-        alert('Error :(');
+      let left = parseInt(leftOperand);
+      let right = parseInt(rightOperand);
+
+      if (isNaN(left) || isNaN(right) || left < 0 || right < 0) {
+        alert("Error :(");
+        console.log("Error :(");
         return;
       }
 
-      const leftNum = parseInt(leftMember);
-      const rightNum = parseInt(rightMember);
-
-      let result;
-
-      if ((operator === '/' || operator === '%') && rightNum === 0) {
+      if ((operator === "/" || operator === "%") && right === 0) {
         alert("It's over 9000!");
         console.log("It's over 9000!");
         return;
       }
 
+      let result;
       switch (operator) {
-        case '+':
-          result = leftNum + rightNum;
+        case "+":
+          result = left + right;
           break;
-        case '-':
-          result = leftNum - rightNum;
+        case "-":
+          result = left - right;
           break;
-        case '*':
-          result = leftNum * rightNum;
+        case "*":
+          result = left * right;
           break;
-        case '/':
-          result = leftNum / rightNum;
+        case "/":
+          result = left / right;
           break;
-        case '%':
-          result = leftNum % rightNum;
+        case "%":
+          result = left % right;
           break;
-        default:
-          result = 'Error :(';
       }
 
-      alert(`Result: ${result}`);
-      console.log(`Result: ${result}`);
+      alert("Result: " + result);
+      console.log("Result: " + result);
     }
 
-    setInterval(function () {
-      alert('Please, use me...');
-    }, 30000);
+    function remind() {
+      setInterval(function () {
+        alert("Please, use me...");
+      }, 30000);
+    }
+
+    window.onload = function () {
+      remind();
+    };
   </script>
 </head>
+
 <body>
+
   <h1>Basic Calculator</h1>
-  <form onsubmit="calculate(); return false;">
-    <input type="number" id="leftMember" min="0" placeholder="Left number" required>
-    <select id="operator">
-      <option value="+">+</option>
-      <option value="-">-</option>
-      <option value="*">*</option>
-      <option value="/">/</option>
-      <option value="%">%</option>
-    </select>
-    <input type="number" id="rightMember" min="0" placeholder="Right number" required>
-    <input type="submit" value="Try me!">
-  </form>
+
+  <input type="text" id="leftOperand" placeholder="Left Operand">
+
+  <select id="operator">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+    <option value="%">%</option>
+  </select>
+
+  <input type="text" id="rightOperand" placeholder="Right Operand">
+
+  <input type="button" value="Try me!" onclick="calculate()">
+
 </body>
+
 </html>
