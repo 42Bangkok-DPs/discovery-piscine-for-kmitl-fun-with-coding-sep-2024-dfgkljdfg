@@ -19,9 +19,11 @@ function loadTodos() {
     const savedTodos = getCookie('todos');
     if (savedTodos) {
         const todos = JSON.parse(savedTodos);
+        todos.reverse();
         todos.forEach(todo => addTodoToDOM(todo));
     }
 }
+
 
 
 function saveTodos() {
@@ -29,7 +31,7 @@ function saveTodos() {
     document.querySelectorAll('.todo-item').forEach(item => {
         todos.push(item.innerText);
     });
-    setCookie('todos', JSON.stringify(todos), 7);  
+    setCookie('todos', JSON.stringify(todos), 7);
 }
 
 
@@ -39,25 +41,23 @@ function addTodoToDOM(text) {
     newTodo.className = 'todo-item';
     newTodo.innerText = text;
 
-
-    newTodo.addEventListener('click', function() {
+    newTodo.addEventListener('click', function () {
         const confirmDelete = confirm("Do you really want to remove this item?");
         if (confirmDelete) {
             ftList.removeChild(newTodo);
-            saveTodos(); 
+            saveTodos();
         }
     });
-
-
     ftList.prepend(newTodo);
 }
+
 
 
 function createNewTodo() {
     const newTodoText = prompt("Enter a new to-do item:");
     if (newTodoText) {
         addTodoToDOM(newTodoText);
-        saveTodos(); 
+        saveTodos();
     }
 }
 
@@ -65,6 +65,6 @@ function createNewTodo() {
 document.getElementById('new-button').addEventListener('click', createNewTodo);
 
 
-window.onload = function() {
+window.onload = function () {
     loadTodos();
 };
