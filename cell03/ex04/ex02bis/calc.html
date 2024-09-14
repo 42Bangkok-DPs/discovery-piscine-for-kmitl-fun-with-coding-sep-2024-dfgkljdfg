@@ -12,14 +12,17 @@
       let operator = $("#operator").val();
       let rightOperand = $("#rightOperand").val();
 
-      let left = parseInt(leftOperand);
-      let right = parseInt(rightOperand);
 
-      if (isNaN(left) || isNaN(right) || left < 0 || right < 0) {
-        alert("Error :(");
-        console.log("Error :(");
+      const check = /[\+\-\*\/%\s\.]/;
+
+      if (isNaN(leftOperand) || isNaN(rightOperand) || (leftOperand) < 0 || (rightOperand) < 0 || check.test(leftOperand) || check.test(rightOperand)) {
+        alert('Error :(');
+        console.log('Error :(');
         return;
       }
+
+      left = parseInt(leftOperand);
+      right = parseInt(rightOperand);
 
       if ((operator === "/" || operator === "%") && right === 0) {
         alert("It's over 9000!");
@@ -44,6 +47,10 @@
         case "%":
           result = left % right;
           break;
+        default:
+          alert("Error :(");
+          console.log("Error :(");
+          return;
       }
 
       alert("Result: " + result);
