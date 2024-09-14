@@ -1,19 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const listContainer = document.getElementById('ft_list');
-    const newButton = document.getElementById('new-button');
-
+$(document).ready(function() {
+    const $listContainer = $('#ft_list');
+    const $newButton = $('#new-button');
 
     function createTodoItem(text) {
-        const todoItem = document.createElement('div');
-        todoItem.className = 'todo-item';
-        todoItem.textContent = text;
-        todoItem.onclick = () => {
-            if (confirm('Do you want to remove this task?')) {
-                todoItem.remove();
-                saveToDoList();
+        const $todoItem = $('<div>', {
+            class: 'todo-item',
+            text: text,
+            click: function() {
+                if (confirm('Do you want to remove this task?')) {
+                    $(this).remove();
+                    saveToDoList();
+                }
             }
-        };
-        return todoItem;
+        });
+        return $todoItem;
     }
 
     function loadToDoList() {
@@ -25,26 +25,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }, {});
         
         const todoList = cookies[cookieName] ? JSON.parse(decodeURIComponent(cookies[cookieName])) : [];
-        todoList.forEach(todo => {
-            listContainer.appendChild(createTodoItem(todo));
+        $.each(todoList, function(_, todo) {
+            $listContainer.append(createTodoItem(todo));
         });
     }
 
-
     function saveToDoList() {
-        const todoList = Array.from(listContainer.children).map(child => child.textContent);
+        const todoList = $listContainer.children().map(function() {
+            return $(this).text();
+        }).get();
         document.cookie = `todoList=${encodeURIComponent(JSON.stringify(todoList))}; path=/;`;
     }
 
-
-    newButton.onclick = () => {
-        const newTodo = prompt('Enter a new task::');
+    $newButton.click(function() {
+        const newTodo = prompt('Enter a new task:');
         if (newTodo && newTodo.trim() !== '') {
-            const todoItem = createTodoItem(newTodo.trim());
-            listContainer.insertBefore(todoItem, listContainer.firstChild);
+            const $todoItem = createTodoItem(newTodo.trim());
+            $listContainer.prepend($todoItem);
             saveToDoList();
         }
-    };
+    });
 
     loadToDoList();
 });
